@@ -17,13 +17,12 @@ const Addbar = ({ text, setText, onClick }) => {
         style={{
           border: `1px solid #9E78CF`,
           height: "30px",
-          width: "60%",
+          width: "70%",
           borderRadius: "5px",
           backgroundColor: "transparent",
           paddingInline: "10px",
           color: "#9E78CF",
           outline: 0,
-          fontSize: { xs: "12px", md: "16px" },
         }}
         onKeyDown={(item) => {
           if (item.key === "Enter") {
