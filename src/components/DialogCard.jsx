@@ -4,9 +4,8 @@ import {
   Button,
   Dialog,
   DialogActions,
-  DialogContent,
-  DialogContentText,
   DialogTitle,
+  Tooltip,
 } from "@mui/material";
 import React from "react";
 
@@ -18,25 +17,28 @@ const DialogCard = ({ open, handleClose, handleDeleteTodo }) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <Box sx={{ bgcolor: "#9E78CF", p: 2 }}>
-        <DialogTitle sx={{ color: "#1D1825" }} id="alert-dialog-title">
+      <Box
+        sx={{
+          bgcolor: "#9E78CF",
+          p: 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 2,
+        }}
+      >
+        <Tooltip title="Görevi silerseniz geri alamazsınız." placement="bottom">
+          <ErrorOutline fontSize="large" />
+        </Tooltip>
+        <DialogTitle
+          sx={{ color: "#1D1825", textAlign: "center" }}
+          id="alert-dialog-title"
+        >
           {"Bu görevi silmek istediğinizden emin misiniz?"}
         </DialogTitle>
-        <DialogContent>
-          <DialogContentText
-            id="alert-dialog-description"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 1,
-            }}
-          >
-            <ErrorOutline />
-            Görevi silerseniz geri alamazsınız.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions sx={{ display: "flex", justifyContent: "center" }}>
+        <DialogActions
+          sx={{ display: "flex", justifyContent: "center", gap: 1 }}
+        >
           <Button
             variant="outlined"
             sx={{ color: "#1D1825", borderColor: "#1D1825" }}
