@@ -13,16 +13,8 @@ const App = () => {
   };
 
   const [text, setText] = useState("");
-  const [todoData, setTodoData] = useState([
-    "Lorem ipsum dolor sit amet",
-    "Lorem lorem",
-    "ipsum dolor",
-    "amet sit dolor",
-  ]);
-  const [todoDataDone, setTodoDataDone] = useState([
-    "Lorem ipsum dolor sit amet",
-    "Lorem ipsum dolor sit amet",
-  ]);
+  const [todoData, setTodoData] = useState([]);
+  const [todoDataDone, setTodoDataDone] = useState([]);
 
   const moveTodoToDone = (index) => {
     const updatedTodoData = [...todoData]; // firstly copy the state
@@ -94,14 +86,26 @@ const App = () => {
           >
             Tasks to do - {todoData.length}
           </Typography>
-          {todoData.map((item, index) => (
-            <Card
-              key={index}
-              text={item}
-              moveTodoToDone={() => moveTodoToDone(index)}
-              deleteTodo={() => deleteTodo(index)}
-            />
-          ))}
+          {todoData.length > 0 ? (
+            todoData.map((item, index) => (
+              <Card
+                key={index}
+                text={item}
+                moveTodoToDone={() => moveTodoToDone(index)}
+                deleteTodo={() => deleteTodo(index)}
+              />
+            ))
+          ) : (
+            <Typography
+              sx={{
+                marginBlockStart: "100px",
+                color: "#9E78CF",
+                textAlign: "center",
+              }}
+            >
+              Henüz bir görev eklenmedi
+            </Typography>
+          )}
         </Box>
 
         {/* complete list */}
@@ -121,14 +125,26 @@ const App = () => {
           >
             Done - {todoDataDone.length}
           </Typography>
-          {todoDataDone.map((item, index) => (
-            <CardDone
-              key={index}
-              text={item}
-              moveDoneToTodo={() => moveDoneToTodo(index)}
-              deleteTodoDone={() => deleteTodoDone(index)}
-            />
-          ))}
+          {todoDataDone.length > 0 ? (
+            todoDataDone.map((item, index) => (
+              <CardDone
+                key={index}
+                text={item}
+                moveDoneToTodo={() => moveDoneToTodo(index)}
+                deleteTodoDone={() => deleteTodoDone(index)}
+              />
+            ))
+          ) : (
+            <Typography
+              sx={{
+                marginBlockStart: "100px",
+                color: "#9E78CF",
+                textAlign: "center",
+              }}
+            >
+              Tamamlanmış görev bulunmuyor.
+            </Typography>
+          )}
         </Box>
       </Box>
     </Box>
