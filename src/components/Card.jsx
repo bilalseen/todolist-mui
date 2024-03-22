@@ -1,5 +1,13 @@
 import { DeleteOutline, Done, MoreVert } from "@mui/icons-material";
-import { Box, IconButton, Tooltip, Typography } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import DialogCard from "./DialogCard";
 
@@ -20,6 +28,16 @@ const Card = ({ text, moveTodoToDone, deleteTodo }) => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openAnchor = Boolean(anchorEl);
+
+  const handleClickAnchor = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseAnchor = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -75,8 +93,57 @@ const Card = ({ text, moveTodoToDone, deleteTodo }) => {
           gap: 1,
         }}
       >
+        <Menu
+          anchorEl={anchorEl}
+          id="account-menu"
+          open={openAnchor}
+          onClose={handleCloseAnchor}
+          onClick={handleCloseAnchor}
+          PaperProps={{
+            elevation: 0,
+            sx: {
+              bgcolor: "#9E78CF",
+              overflow: "visible",
+              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+              mt: 1.5,
+              "& .MuiAvatar-root": {
+                width: 32,
+                height: 32,
+                ml: -0.5,
+                mr: 1,
+              },
+              "&::before": {
+                content: '""',
+                display: "block",
+                position: "absolute",
+                top: 0,
+                right: 14,
+                width: 10,
+                height: 10,
+                bgcolor: "#9E78CF",
+                transform: "translateY(-50%) rotate(45deg)",
+                zIndex: 0,
+              },
+            },
+          }}
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        >
+          <MenuItem onClick={handleDoneClick}>
+            <ListItemIcon>
+              <Done sx={{ color: "#15101C" }} />
+            </ListItemIcon>
+            Tamamla
+          </MenuItem>
+          <MenuItem onClick={handleDeleteClick}>
+            <ListItemIcon>
+              <DeleteOutline sx={{ color: "#15101C" }} />
+            </ListItemIcon>
+            Delete
+          </MenuItem>
+        </Menu>
         <Tooltip title="More" placement="top">
-          <IconButton onClick={() => null}>
+          <IconButton onClick={handleClickAnchor}>
             <MoreVert sx={{ color: "#9E78CF" }} />
           </IconButton>
         </Tooltip>
