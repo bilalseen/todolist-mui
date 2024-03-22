@@ -57,8 +57,8 @@ const App = () => {
     <Box
       sx={{
         bgcolor: "#0D0714",
-        width: "99vw",
         paddingBlock: "100px",
+        height: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -66,8 +66,8 @@ const App = () => {
     >
       <Box
         sx={{
-          width: 583,
-          minHeight: 658,
+          width: { xs: "70%", sm: "60%", md: "50%", lg: "40%", xl: "30%" },
+          minHeight: "75%",
           bgcolor: "#1D1825",
           borderRadius: 5,
           paddingBlock: 5,
@@ -87,7 +87,11 @@ const App = () => {
             minHeight: 250,
           }}
         >
-          <Typography variant="h6" sx={{ width: 430, color: "white" }}>
+          <Typography
+            variant="h6"
+            sx={{ width: "80%", color: "white" }}
+            fontSize={{ xs: 12, sm: 14, md: 16 }}
+          >
             Tasks to do - {todoData.length}
           </Typography>
           {todoData.map((item, index) => (
@@ -110,7 +114,11 @@ const App = () => {
             minHeight: 250,
           }}
         >
-          <Typography variant="h6" sx={{ width: 430, color: "white" }}>
+          <Typography
+            variant="h6"
+            sx={{ width: "80%", color: "white" }}
+            fontSize={{ xs: 12, sm: 14, md: 16 }}
+          >
             Done - {todoDataDone.length}
           </Typography>
           {todoDataDone.map((item, index) => (
