@@ -1,14 +1,25 @@
-import { Delete, DeleteOutline, Done, Undo } from "@mui/icons-material";
+import { DeleteOutline, Undo } from "@mui/icons-material";
 import { Box, IconButton, Tooltip, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import DialogCard from "./DialogCard";
 
 const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
+  const [open, setOpen] = useState(false);
   const handleUndoClick = () => {
     moveDoneToTodo(text);
   };
 
   const handleDeleteClick = () => {
+    setOpen(true);
+  };
+
+  const handleDeleteTodo = () => {
     deleteTodoDone(text);
+    setOpen(false);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
   return (
     <Box
@@ -45,6 +56,11 @@ const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
           </IconButton>
         </Tooltip>
       </Box>
+      <DialogCard
+        open={open}
+        handleClose={handleClose}
+        handleDeleteTodo={handleDeleteTodo}
+      />
     </Box>
   );
 };

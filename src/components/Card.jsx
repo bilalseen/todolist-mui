@@ -1,14 +1,25 @@
-import { Delete, DeleteOutline, Done } from "@mui/icons-material";
+import { DeleteOutline, Done } from "@mui/icons-material";
 import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 import React from "react";
+import DialogCard from "./DialogCard";
 
 const Card = ({ text, moveTodoToDone, deleteTodo }) => {
+  const [open, setOpen] = React.useState(false);
   const handleDoneClick = () => {
     moveTodoToDone(text);
   };
 
   const handleDeleteClick = () => {
+    setOpen(true);
+  };
+
+  const handleDeleteTodo = () => {
     deleteTodo(text);
+    setOpen(false);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -41,6 +52,11 @@ const Card = ({ text, moveTodoToDone, deleteTodo }) => {
           </IconButton>
         </Tooltip>
       </Box>
+      <DialogCard
+        open={open}
+        handleClose={handleClose}
+        handleDeleteTodo={handleDeleteTodo}
+      />
     </Box>
   );
 };
