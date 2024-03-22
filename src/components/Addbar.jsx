@@ -3,17 +3,8 @@ import { Box, IconButton, Tooltip } from "@mui/material";
 import React, { useState } from "react";
 
 const Addbar = ({ text, setText, onClick }) => {
-  const [open, setOpen] = React.useState(false);
   const [inputBorderColor, setInputBorderColor] = useState("#9E78CF");
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-  
   return (
     <Box
       sx={{
@@ -36,6 +27,11 @@ const Addbar = ({ text, setText, onClick }) => {
           color: "#9E78CF",
           outline: 0,
           fontSize: "18px",
+        }}
+        onKeyDown={(item) => {
+          if (item.key === "Enter") {
+            onClick();
+          }
         }}
         placeholder="Add a new task"
         onChange={(e) => setText(e.target.value)}
