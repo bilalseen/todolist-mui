@@ -3,8 +3,6 @@ import { Box, IconButton, Tooltip } from "@mui/material";
 import React, { useState } from "react";
 
 const Addbar = ({ text, setText, onClick }) => {
-  const [inputBorderColor, setInputBorderColor] = useState("#9E78CF");
-
   return (
     <Box
       sx={{
@@ -15,18 +13,17 @@ const Addbar = ({ text, setText, onClick }) => {
       }}
     >
       <input
-        onFocus={() => setInputBorderColor("#9E78CF")}
         value={text}
         style={{
-          border: `1px solid ${inputBorderColor}`,
+          border: `1px solid #9E78CF`,
           height: "30px",
-          width: "380px",
+          width: "60%",
           borderRadius: "5px",
           backgroundColor: "transparent",
           paddingInline: "10px",
           color: "#9E78CF",
           outline: 0,
-          fontSize: "18px",
+          fontSize: { xs: "12px", md: "16px" },
         }}
         onKeyDown={(item) => {
           if (item.key === "Enter") {
@@ -38,10 +35,10 @@ const Addbar = ({ text, setText, onClick }) => {
       />
       <Tooltip title="Ekle" placement="top">
         <IconButton
-          // onClick={text ? null : setInputBorderColor("red")}
           onClick={onClick}
           aria-label="delete"
           sx={{
+            display: { xs: "none", md: "flex" },
             color: "white",
             bgcolor: "#9E78CF",
             borderRadius: 2,
