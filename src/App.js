@@ -88,7 +88,7 @@ const App = () => {
         flexDirection: "column",
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
         <ButtonLang />
         <ReactCountryFlag
           countryCode={countryCode}
