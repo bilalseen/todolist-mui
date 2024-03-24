@@ -5,9 +5,22 @@ import Card from "./components/Card";
 import CardDone from "./components/CardDone";
 import { useTranslation } from "react-i18next";
 import ButtonLang from "./components/ButtonLang";
+import ReactCountryFlag from "react-country-flag";
 
 const App = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const [countryCode, setCountryCode] = useState(i18n.language);
+
+  useEffect(() => {
+    if (i18n.language === "en") {
+      setCountryCode("Us");
+    } else if (i18n.language === "zh") {
+      setCountryCode("Cn");
+    } else {
+      setCountryCode(i18n.language);
+    }
+  }, [i18n.language]);
 
   const getLocalStorageData = (key) => {
     const data = localStorage.getItem(key);
@@ -75,7 +88,18 @@ const App = () => {
         flexDirection: "column",
       }}
     >
-      <ButtonLang />
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <ButtonLang />
+        <ReactCountryFlag
+          countryCode={countryCode}
+          svg
+          style={{
+            width: "1.5em",
+            height: "1.5em",
+          }}
+          title="US"
+        />
+      </Box>
       <Box
         sx={{
           bgcolor: "#0D0714",
