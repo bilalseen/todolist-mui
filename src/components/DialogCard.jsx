@@ -8,8 +8,10 @@ import {
   Tooltip,
 } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const DialogCard = ({ open, handleClose, handleDeleteTodo }) => {
+  const { t } = useTranslation();
   return (
     <Dialog
       open={open}
@@ -27,14 +29,17 @@ const DialogCard = ({ open, handleClose, handleDeleteTodo }) => {
           gap: 2,
         }}
       >
-        <Tooltip title="Görevi silerseniz geri alamazsınız." placement="bottom">
+        <Tooltip
+          title={t("dialogCard.toolTips.icons.warning")}
+          placement="bottom"
+        >
           <ErrorOutline fontSize="large" />
         </Tooltip>
         <DialogTitle
           sx={{ color: "#1D1825", textAlign: "center" }}
           id="alert-dialog-title"
         >
-          {"Bu görevi silmek istediğinizden emin misiniz?"}
+          {t("dialogCard.title")}
         </DialogTitle>
         <DialogActions
           sx={{ display: "flex", justifyContent: "center", gap: 1 }}
@@ -44,7 +49,7 @@ const DialogCard = ({ open, handleClose, handleDeleteTodo }) => {
             sx={{ color: "#1D1825", borderColor: "#1D1825" }}
             onClick={handleClose}
           >
-            Kapat
+            {t("dialogCard.close")}
           </Button>
           <Button
             variant="outlined"
@@ -52,7 +57,7 @@ const DialogCard = ({ open, handleClose, handleDeleteTodo }) => {
             onClick={handleDeleteTodo}
             autoFocus
           >
-            Sil
+            {t("dialogCard.delete")}
           </Button>
         </DialogActions>
       </Box>

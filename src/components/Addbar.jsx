@@ -1,8 +1,11 @@
 import { Add } from "@mui/icons-material";
 import { Box, IconButton, Tooltip } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Addbar = ({ text, setText, onClick }) => {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -29,10 +32,10 @@ const Addbar = ({ text, setText, onClick }) => {
             onClick();
           }
         }}
-        placeholder="Add a new task"
+        placeholder={t("inputPlaceholder")}
         onChange={(e) => setText(e.target.value)}
       />
-      <Tooltip title="Ekle" placement="top">
+      <Tooltip title={t("toolTips.buttons.add")} placement="top">
         <IconButton
           onClick={onClick}
           aria-label="delete"

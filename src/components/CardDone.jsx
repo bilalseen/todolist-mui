@@ -10,8 +10,11 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import DialogCard from "./DialogCard";
+import { useTranslation } from "react-i18next";
 
 const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
+  const { t } = useTranslation();
+
   const [open, setOpen] = useState(false);
   const handleUndoClick = () => {
     moveDoneToTodo(text);
@@ -73,12 +76,12 @@ const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
           gap: 1,
         }}
       >
-        <Tooltip title="Geri al" placement="top">
+        <Tooltip title={t("toolTips.buttons.takeItBack")} placement="top">
           <IconButton onClick={handleUndoClick}>
             <Undo sx={{ color: "#9E78CF" }} />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Sil" placement="top">
+        <Tooltip title={t("toolTips.buttons.delete")} placement="top">
           <IconButton onClick={handleDeleteClick}>
             <DeleteOutline sx={{ color: "#9E78CF" }} />
           </IconButton>
@@ -130,7 +133,7 @@ const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
             <ListItemIcon>
               <Undo sx={{ color: "#15101C" }} />
             </ListItemIcon>
-            Geri al
+            Geri
           </MenuItem>
           <MenuItem onClick={handleDeleteClick}>
             <ListItemIcon>
