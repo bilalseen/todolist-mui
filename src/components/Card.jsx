@@ -136,7 +136,7 @@ const Card = ({ text, moveTodoToDone, deleteTodo }) => {
             <ListItemIcon>
               <Done sx={{ color: "#15101C" }} />
             </ListItemIcon>
-            {t("toolTips.buttons.takeItBack")}
+            {t("toolTips.buttons.complete")}
           </MenuItem>
           <MenuItem onClick={handleDeleteClick}>
             <ListItemIcon>
