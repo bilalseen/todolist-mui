@@ -1,0 +1,26 @@
+{
+  "inputPlaceholder": "添加新任务",
+  "taskTodo": "待办任务",
+  "done": "完成",
+  "noTasks": "暂无添加任务",
+  "noDoneTasks": "没有已完成的任务",
+  "changeLanguageButton": "切换语言",
+  "dialogCard": {
+    "title": "您确定要删除此任务吗？",
+    "close": "关闭",
+    "delete": "删除",
+    "toolTips": {
+      "icons": {
+        "warning": "如果删除任务，将无法撤销。"
+      }
+    }
+  },
+  "toolTips": {
+    "buttons": {
+      "add": "添加",
+      "complete": "完成",
+      "delete": "删除",
+      "takeItBack": "撤销"
+    }
+  }
+}

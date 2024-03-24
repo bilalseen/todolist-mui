@@ -1,0 +1,26 @@
+{
+  "inputPlaceholder": "Agregar una nueva tarea",
+  "taskTodo": "Tarea por hacer",
+  "done": "Hecho",
+  "noTasks": "Aún no se han agregado tareas",
+  "noDoneTasks": "No hay tareas completadas",
+  "changeLanguageButton": "Cambiar el idioma",
+  "dialogCard": {
+    "title": "¿Estás seguro de que quieres eliminar esta tarea?",
+    "close": "Cerrar",
+    "delete": "Eliminar",
+    "toolTips": {
+      "icons": {
+        "warning": "Si eliminas la tarea, no podrás deshacer esta acción."
+      }
+    }
+  },
+  "toolTips": {
+    "buttons": {
+      "add": "Agregar",
+      "complete": "Completar",
+      "delete": "Eliminar",
+      "takeItBack": "Recuperar"
+    }
+  }
+}

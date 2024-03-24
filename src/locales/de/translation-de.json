@@ -1,0 +1,26 @@
+{
+  "inputPlaceholder": "Neue Aufgabe hinzufügen",
+  "taskTodo": "Aufgabe zu erledigen",
+  "done": "Erledigt",
+  "noTasks": "Keine Aufgaben hinzugefügt",
+  "noDoneTasks": "Es gibt keine abgeschlossenen Aufgaben",
+  "changeLanguageButton": "Sprache ändern",
+  "dialogCard": {
+    "title": "Möchten Sie diese Aufgabe wirklich löschen?",
+    "close": "Schließen",
+    "delete": "Löschen",
+    "toolTips": {
+      "icons": {
+        "warning": "Wenn Sie die Aufgabe löschen, können Sie dies nicht rückgängig machen."
+      }
+    }
+  },
+  "toolTips": {
+    "buttons": {
+      "add": "Hinzufügen",
+      "complete": "Abschließen",
+      "delete": "Löschen",
+      "takeItBack": "Zurücknehmen"
+    }
+  }
+}

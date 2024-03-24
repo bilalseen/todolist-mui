@@ -1,0 +1,26 @@
+{
+  "inputPlaceholder": "Yeni bir görev ekle",
+  "taskTodo": "Yapılacak görev",
+  "done": "Tamamlanmış",
+  "noTasks": "Henüz görev eklenmedi",
+  "noDoneTasks": "Tamamlanmış görev bulunmuyor",
+  "changeLanguageButton": "Dili değiştir",
+  "dialogCard": {
+    "title": "Bu görevi silmek istediğinizden emin misiniz?",
+    "close": "Kapat",
+    "delete": "Sil",
+    "toolTips": {
+      "icons": {
+        "warning": "Görevi silerseniz geri alamazsınız."
+      }
+    }
+  },
+  "toolTips": {
+    "buttons": {
+      "add": "Ekle",
+      "complete": "Tamamla",
+      "delete": "Sil",
+      "takeItBack": "Geri al"
+    }
+  }
+}
