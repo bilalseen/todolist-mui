@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import Addbar from "./components/Addbar";
 import Card from "./components/Card";
 import CardDone from "./components/CardDone";
+import { useTranslation } from "react-i18next";
+import ButtonLang from "./components/ButtonLang";
 
 const App = () => {
+  const { t, i18n } = useTranslation();
+
   const handleClick = () => {
     if (text) {
       setTodoData([...todoData, text]); // update state and add the new object
@@ -45,106 +49,123 @@ const App = () => {
     setTodoDataDone(updatedTodoDataDone);
   };
 
+  const clickHandle = (lang) => {
+    i18n.changeLanguage(lang);
+  };
+
   return (
     <Box
       sx={{
         bgcolor: "#0D0714",
-        paddingBlock: "100px",
-        height: "100%",
+        // paddingBlock: "100px",
+        height: "100vh",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        flexDirection: "column",
+        // justifyContent: "center",
+        // alignItems: "center",
       }}
     >
+      <ButtonLang />
       <Box
         sx={{
-          width: { xs: "70%", sm: "60%", md: "50%", lg: "40%", xl: "30%" },
-          minHeight: "75%",
-          bgcolor: "#1D1825",
-          borderRadius: 5,
-          paddingBlock: 5,
+          bgcolor: "#0D0714",
+          height: "100%",
           display: "flex",
           flexDirection: "column",
-          gap: 7,
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Addbar text={text} setText={setText} onClick={handleClick} />
-        {/* todo list */}
         <Box
           sx={{
+            width: { xs: "70%", sm: "60%", md: "50%", lg: "40%", xl: "30%" },
+            minHeight: "75%",
+            bgcolor: "#1D1825",
+            borderRadius: 5,
+            paddingBlock: 5,
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            gap: 2,
-            minHeight: 250,
+            gap: 7,
           }}
         >
-          <Typography
-            variant="h6"
-            sx={{ width: "80%", color: "white" }}
-            fontSize={{ xs: 12, sm: 14, md: 16 }}
+          <Addbar text={text} setText={setText} onClick={handleClick} />
+          {/* todo list */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 2,
+              minHeight: 250,
+            }}
           >
-            Tasks to do - {todoData.length}
-          </Typography>
-          {todoData.length > 0 ? (
-            todoData.map((item, index) => (
-              <Card
-                key={index}
-                text={item}
-                moveTodoToDone={() => moveTodoToDone(index)}
-                deleteTodo={() => deleteTodo(index)}
-              />
-            ))
-          ) : (
             <Typography
-              sx={{
-                marginBlockStart: "100px",
-                color: "#9E78CF",
-                textAlign: "center",
-              }}
+              variant="h6"
+              sx={{ width: "80%", color: "white" }}
+              fontSize={{ xs: 12, sm: 14, md: 16 }}
             >
-              Henüz bir görev eklenmedi
+              {t("taskTodo")} - {todoData.length}
             </Typography>
-          )}
-        </Box>
+            {todoData.length > 0 ? (
+              todoData.map((item, index) => (
+                <Card
+                  key={index}
+                  text={item}
+                  moveTodoToDone={() => moveTodoToDone(index)}
+                  deleteTodo={() => deleteTodo(index)}
+                />
+              ))
+            ) : (
+              <Typography
+                sx={{
+                  marginBlockStart: "100px",
+                  color: "#9E78CF",
+                  textAlign: "center",
+                }}
+              >
+                {t("noTasks")}
+              </Typography>
+            )}
+          </Box>
 
-        {/* complete list */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 2,
-            minHeight: 250,
-          }}
-        >
-          <Typography
-            variant="h6"
-            sx={{ width: "80%", color: "white" }}
-            fontSize={{ xs: 12, sm: 14, md: 16 }}
+          {/* complete list */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 2,
+              minHeight: 250,
+            }}
           >
-            Done - {todoDataDone.length}
-          </Typography>
-          {todoDataDone.length > 0 ? (
-            todoDataDone.map((item, index) => (
-              <CardDone
-                key={index}
-                text={item}
-                moveDoneToTodo={() => moveDoneToTodo(index)}
-                deleteTodoDone={() => deleteTodoDone(index)}
-              />
-            ))
-          ) : (
             <Typography
-              sx={{
-                marginBlockStart: "100px",
-                color: "#9E78CF",
-                textAlign: "center",
-              }}
+              variant="h6"
+              sx={{ width: "80%", color: "white" }}
+              fontSize={{ xs: 12, sm: 14, md: 16 }}
             >
-              Tamamlanmış görev bulunmuyor.
+              {t("done")} - {todoDataDone.length}
             </Typography>
-          )}
+            {todoDataDone.length > 0 ? (
+              todoDataDone.map((item, index) => (
+                <CardDone
+                  key={index}
+                  text={item}
+                  moveDoneToTodo={() => moveDoneToTodo(index)}
+                  deleteTodoDone={() => deleteTodoDone(index)}
+                />
+              ))
+            ) : (
+              <Typography
+                sx={{
+                  marginBlockStart: "100px",
+                  color: "#9E78CF",
+                  textAlign: "center",
+                }}
+              >
+                {t("noDoneTasks")}
+              </Typography>
+            )}
+          </Box>
         </Box>
       </Box>
     </Box>
