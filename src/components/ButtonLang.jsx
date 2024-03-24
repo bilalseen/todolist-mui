@@ -67,7 +67,7 @@ export default function ButtonLang() {
           aria-haspopup="true"
           onClick={handleClick}
         >
-          <Language sx={{ color: "white" }} />
+          <Language sx={{ color: "#9E78CF" }} />
         </IconButton>
       </Tooltip>
       <Menu
