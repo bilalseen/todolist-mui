@@ -2,6 +2,7 @@
 
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
 import translationEN from "./locales/en/translation.json";
 import translationTR from "./locales/tr/translation.json";
@@ -33,9 +34,10 @@ const resources = {
 
 i18n
   .use(initReactI18next) // react için i18next'i başlat
+  .use(LanguageDetector)
   .init({
     resources,
-    lng: "en", // varsayılan dil
+    fallbackLng: "en", // varsayılan dil
     interpolation: {
       escapeValue: false, // HTML dizesi içeriği için kaçışı devre dışı bırak
     },

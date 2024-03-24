@@ -1,4 +1,4 @@
-import { ErrorOutline, WarningAmber } from "@mui/icons-material";
+import { WarningAmber } from "@mui/icons-material";
 import {
   Box,
   Button,

@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Addbar from "./components/Addbar";
 import Card from "./components/Card";
 import CardDone from "./components/CardDone";
@@ -7,7 +7,12 @@ import { useTranslation } from "react-i18next";
 import ButtonLang from "./components/ButtonLang";
 
 const App = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+
+  const getLocalStorageData = (key) => {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : [];
+  };
 
   const handleClick = () => {
     if (text) {
@@ -17,8 +22,20 @@ const App = () => {
   };
 
   const [text, setText] = useState("");
-  const [todoData, setTodoData] = useState([]);
-  const [todoDataDone, setTodoDataDone] = useState([]);
+  const [todoData, setTodoData] = useState(() =>
+    getLocalStorageData("todoData")
+  );
+  const [todoDataDone, setTodoDataDone] = useState(() =>
+    getLocalStorageData("todoDataDone")
+  );
+
+  useEffect(() => {
+    localStorage.setItem("todoData", JSON.stringify(todoData));
+  }, [todoData]);
+
+  useEffect(() => {
+    localStorage.setItem("todoDataDone", JSON.stringify(todoDataDone));
+  }, [todoDataDone]);
 
   const moveTodoToDone = (index) => {
     const updatedTodoData = [...todoData]; // firstly copy the state
@@ -49,20 +66,13 @@ const App = () => {
     setTodoDataDone(updatedTodoDataDone);
   };
 
-  const clickHandle = (lang) => {
-    i18n.changeLanguage(lang);
-  };
-
   return (
     <Box
       sx={{
         bgcolor: "#0D0714",
-        // paddingBlock: "100px",
         height: "100vh",
         display: "flex",
         flexDirection: "column",
-        // justifyContent: "center",
-        // alignItems: "center",
       }}
     >
       <ButtonLang />
