@@ -1,4 +1,4 @@
-import { ErrorOutline } from "@mui/icons-material";
+import { ErrorOutline, WarningAmber } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -33,7 +33,7 @@ const DialogCard = ({ open, handleClose, handleDeleteTodo }) => {
           title={t("dialogCard.toolTips.icons.warning")}
           placement="bottom"
         >
-          <ErrorOutline fontSize="large" />
+          <WarningAmber fontSize="large" />
         </Tooltip>
         <DialogTitle
           sx={{ color: "#1D1825", textAlign: "center" }}
