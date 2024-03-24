@@ -133,20 +133,18 @@ const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
             <ListItemIcon>
               <Undo sx={{ color: "#15101C" }} />
             </ListItemIcon>
-            Geri
+            {t("toolTips.buttons.takeItBack")}
           </MenuItem>
           <MenuItem onClick={handleDeleteClick}>
             <ListItemIcon>
               <DeleteOutline sx={{ color: "#15101C" }} />
             </ListItemIcon>
-            Delete
+            {t("toolTips.buttons.delete")}
           </MenuItem>
         </Menu>
-        <Tooltip title="More" placement="top">
-          <IconButton onClick={handleClickAnchor}>
-            <MoreVert sx={{ color: "#9E78CF" }} />
-          </IconButton>
-        </Tooltip>
+        <IconButton onClick={handleClickAnchor}>
+          <MoreVert sx={{ color: "#9E78CF" }} />
+        </IconButton>
       </Box>
       <DialogCard
         open={open}
