@@ -33,13 +33,13 @@ const resources = {
 };
 
 i18n
-  .use(initReactI18next) // react için i18next'i başlat
+  .use(initReactI18next) // start i18next for react
   .use(LanguageDetector)
   .init({
     resources,
-    fallbackLng: "en", // varsayılan dil
+    fallbackLng: "en", // default language
     interpolation: {
-      escapeValue: false, // HTML dizesi içeriği için kaçışı devre dışı bırak
+      escapeValue: false,
     },
   });
 
