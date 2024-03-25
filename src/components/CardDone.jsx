@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import DialogCard from "./DialogCard";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
   const { t } = useTranslation();
@@ -43,17 +44,19 @@ const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
     setAnchorEl(null);
   };
   return (
-    <Box
-      sx={{
+    <motion.div
+      initial={{ opacity: 0, translateY: -30 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         width: "80%",
         height: 75,
-        bgcolor: "#15101C",
-        borderRadius: 2,
-        px: { xs: 1, lg: 3 },
-        py: 1,
+        backgroundColor: "#15101C",
+        borderRadius: 10,
+        paddingInline: "20px",
+        paddingBlock: 1,
       }}
     >
       <Typography
@@ -151,7 +154,7 @@ const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
         handleClose={handleClose}
         handleDeleteTodo={handleDeleteTodo}
       />
-    </Box>
+    </motion.div>
   );
 };
 
