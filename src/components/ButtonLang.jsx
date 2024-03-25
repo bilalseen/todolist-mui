@@ -5,8 +5,39 @@ import MenuItem from "@mui/material/MenuItem";
 import { Language } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "@mui/material";
+import ReactCountryFlag from "react-country-flag";
 
-const options = ["English", "Türkçe", "Deutsch", "Русский", "Español", "中文"];
+const options = [
+  {
+    language: "English",
+    countryCode: "Us",
+  },
+  {
+    language: "Türkçe",
+    countryCode: "Tr",
+  },
+  {
+    language: "Deutsch",
+    countryCode: "De",
+  },
+  {
+    language: "Español",
+    countryCode: "Es",
+  },
+  {
+    language: "Русский",
+    countryCode: "Ru",
+  },
+
+  {
+    language: "中文",
+    countryCode: "Cn",
+  },
+];
+
+options.sort((a, b) => a.language.localeCompare(b.language));
+
+console.log(options);
 
 const ITEM_HEIGHT = 48;
 
@@ -27,6 +58,7 @@ export default function ButtonLang() {
   };
 
   const changeLanguage = (lang) => {
+    console.log(lang);
     let languageCode;
     switch (lang) {
       case "English":
@@ -85,13 +117,23 @@ export default function ButtonLang() {
           },
         }}
       >
-        {options.map((option) => (
+        {options.map((item) => (
           <MenuItem
-            key={option}
-            selected={option === useSelectedLanguage}
-            onClick={() => changeLanguage(option)}
+            key={item.language}
+            selected={item.language === useSelectedLanguage}
+            onClick={() => changeLanguage(item.language)}
+            sx={{ gap: 1 }}
           >
-            {option}
+            <ReactCountryFlag
+              countryCode={item.countryCode}
+              svg
+              style={{
+                width: "1.5em",
+                height: "1.5em",
+              }}
+              title={item.countryCode}
+            />
+            {item.language}
           </MenuItem>
         ))}
       </Menu>
