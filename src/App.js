@@ -14,14 +14,21 @@ const App = () => {
   const [countryCode, setCountryCode] = useState(i18n.language);
 
   useEffect(() => {
-    if (i18n.language === "en") {
-      setCountryCode("Us");
-    } else if (i18n.language === "zh") {
-      setCountryCode("Cn");
-    } else {
-      setCountryCode(i18n.language);
+    const languageCode = getLanguageFromCode(i18n.language);
+
+    let countryCode = languageCode;
+    if (languageCode === "en") {
+      countryCode = "US";
+    } else if (languageCode === "zh") {
+      countryCode = "CN";
     }
+
+    setCountryCode(countryCode);
   }, [i18n.language]);
+
+  function getLanguageFromCode(code) {
+    return code.split("-")[0];
+  }
 
   const getLocalStorageData = (key) => {
     const data = localStorage.getItem(key);
