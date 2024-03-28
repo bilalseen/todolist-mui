@@ -62,12 +62,13 @@ const Card = ({ text, moveDoneToTodo, deleteTodoDone }) => {
       <Typography
         sx={{
           maxWidth: "70%",
-          color: "#9E78CF",
+          color: "#78CFB0",
           display: "-webkit-box",
           WebkitLineClamp: "3",
           WebkitBoxOrient: "vertical",
           overflow: "hidden",
           textOverflow: "ellipsis",
+          textDecorationLine: "line-through",
         }}
         fontSize={{ xs: 10, sm: 12, md: 14, lg: 16 }}
       >
